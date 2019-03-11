@@ -34,7 +34,7 @@ def new_post(request):
         if form.is_valid():
             post = form.save(commit=False)
             post.username = current_user
-            post.profile_pic = profile.profile_pic
+            post.profilePhotos = profile.profilePhotos
 
             post.likes=0
 
@@ -45,7 +45,7 @@ def new_post(request):
     else:
         form = PostForm()
 
-    return render(request,'new_post.html',{"form":form})
+    return render(request,'newPost.html',{"form":form})
 
 @login_required(login_url='/accounts/login/')
 def new_location(request):
@@ -94,7 +94,7 @@ def profile(request):
         
 
     except ObjectDoesNotExist:
-        return redirect('edit-profile')
+        return redirect('editProfile')
 
 
     return render(request,"profile.html",{"profile":profile,"posts":posts,"form":form,"post_number":post_number,"title":title,"username":username,"comments":comments,"comment_number":comment_number})
@@ -113,7 +113,7 @@ def edit_profile(request):
     else:
         form=ProfileForm()
 
-    return render(request,'edit_profile.html',{"form":form})
+    return render(request,'editProfile.html',{"form":form})
 
 def comment(request):
     print("AJAX is working")

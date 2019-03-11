@@ -1,7 +1,17 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render
+from django.shortcuts import render,redirect
+from django.http import HttpResponse,Http404,HttpResponseRedirect
+from django.contrib.auth.decorators import login_required
+from django.core.exceptions import ObjectDoesNotExist
+from .models import Post,Profile,Comment
+from .forms import PostForm,LocationForm,ProfileForm,CommentForm
+from decouple import config,Csv
+import datetime as dt
+from django.http import JsonResponse
+import json
+from django.db.models import Q
 
 # Create your views here.
 def timeline(request):
@@ -59,7 +69,6 @@ def profile(request):
     comments=Comment.objects.all()
     comment_number=len(comments)
     print(current_user)
-    # print(current_user_id)
 
     post_id = None
     if request.method == 'GET':
@@ -82,7 +91,7 @@ def profile(request):
         title = profile.name
         username = profile.username
         post_number= len(posts)
-        # print(post_number)
+        
 
     except ObjectDoesNotExist:
         return redirect('edit-profile')
@@ -132,7 +141,7 @@ def explore(request):
     comments=Comment.objects.all()
 
 
-    return render(request,"explore.html",{"posts":posts,"form":form,"comments":comments})
+    return render(request,"people.html",{"posts":posts,"form":form,"comments":comments})
 
 
 @login_required(login_url='/accounts/login/')

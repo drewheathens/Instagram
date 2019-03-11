@@ -7,10 +7,14 @@ from tinymce.models import HTMLField
 from django.db.models import Q
 
 import datetime as dt
+Gender=(
+    ('Male','Male'),
+    ('Female','Female'),
+    )
 
 # Create your models here.
 class Profile(models.Model):
-    profile_pic = models.ImageField(upload_to='profilehotos/')
+    profile_pic = models.ImageField(upload_to='profilePhotos/')
     bio = HTMLField()
     name = models.CharField(max_length=255)
     username = models.ForeignKey(User,on_delete=models.CASCADE)

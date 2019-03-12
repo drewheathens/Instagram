@@ -62,6 +62,7 @@ def new_location(request):
 
     return render(request,'newLocation.html',{"form":form})
 
+@login_required(login_url='/accounts/login/')
 def profile(request):
     current_user = request.user
     current_user_id=request.user.id
@@ -115,6 +116,7 @@ def edit_profile(request):
 
     return render(request,'editProfile.html',{"form":form})
 
+@login_required(login_url='/accounts/login/')
 def comment(request):
     print("AJAX is working")
 

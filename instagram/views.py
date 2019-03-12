@@ -60,7 +60,7 @@ def new_location(request):
     else:
         form = LocationForm()
 
-    return render(request,'new_location.html',{"form":form})
+    return render(request,'newLocation.html',{"form":form})
 
 def profile(request):
     current_user = request.user
@@ -186,7 +186,7 @@ def userprofile(request,profile_id):
         posts = Post.objects.filter(username=prof_username)
     except:
         raise ObjectDoesNotExist()
-    return render(request,"user-profile.html",{"profile":profile,"posts":posts,"form":form,"comments":comments})
+    return render(request,"userProfile.html",{"profile":profile,"posts":posts,"form":form,"comments":comments})
 
 
 @login_required(login_url='/accounts/login/')
@@ -205,4 +205,4 @@ def change_profile(request,username):
     else:
         form = ProfileForm()
 
-    return render(request,'change_profile.html',{"form":form})
+    return render(request,'changeProfile.html',{"form":form})

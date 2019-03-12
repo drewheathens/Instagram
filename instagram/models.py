@@ -14,7 +14,7 @@ Gender=(
 
 # Create your models here.
 class Profile(models.Model):
-    profile_pic = models.ImageField(upload_to='profilePhotos/')
+    profile_picture = models.ImageField(upload_to='profilePhotos/')
     bio = HTMLField()
     name = models.CharField(max_length=255)
     username = models.ForeignKey(User,on_delete=models.CASCADE)

@@ -114,7 +114,7 @@ def edit_profile(request):
     else:
         form=ProfileForm()
 
-    return render(request,'editProfile.html',{"form":form})
+    return render(request,'profile.html',{"form":form})
 
 @login_required(login_url='/accounts/login/')
 def comment(request):

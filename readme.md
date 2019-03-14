@@ -36,6 +36,17 @@ Visit https://mainstagram.herokuapp.com/
 
 The project is still under development.
 
+## **BUGS**
+
+-In small size displays the navbar isn't responsive.
+
+-Like functionality not active as in admin dashboard.
+
+-Ajax not responsive, page has to refresh to see recent comment.
+
+-Recents images not responsive.
+
+
 ## **CONTRIBUTION**
 
 When contributing to this repository, please first discuss the change you wish to make via issue. mudavadie@gmail.com

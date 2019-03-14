@@ -97,7 +97,7 @@ TEMPLATES = [
     },
 ]
 
-# AUTH_PROFILE_MODULE = 'instagram.Profile'
+AUTH_PROFILE_MODULE = 'instagram.Profile'
 
 WSGI_APPLICATION = 'images.wsgi.application'
 

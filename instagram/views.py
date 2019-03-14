@@ -14,6 +14,8 @@ import json
 from django.db.models import Q
 
 # Create your views here.
+
+@login_required(login_url='/accounts/login/')
 def timeline(request):
     current_user=request.user
     posts= Post.objects.all()
@@ -114,7 +116,7 @@ def edit_profile(request):
     else:
         form=ProfileForm()
 
-    return render(request,'profile.html',{"form":form})
+    return render(request,'editProfile.html',{"form":form})
 
 @login_required(login_url='/accounts/login/')
 def comment(request):
@@ -200,11 +202,11 @@ def change_profile(request,username):
             caption = form.save(commit=False)
             caption.username = current_user
             caption.save()
-        return redirect('index')
+        return redirect('changeProfile')
     elif Profile.objects.get(username=current_user):
         profile = Profile.objects.get(username=current_user)
         form = ProfileForm(instance=profile)
     else:
         form = ProfileForm()
 
-    return render(request,'changeProfile.html',{"form":form})
+    return render(request,'editProfile.html',{"form":form})

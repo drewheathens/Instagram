@@ -14,7 +14,7 @@ Gender=(
 
 # Create your models here.
 class Profile(models.Model):
-    profile_picture = models.ImageField(upload_to='profilePhotos/')
+    profilePhotos = models.ImageField(upload_to='profilePhotos/')
     bio = HTMLField()
     name = models.CharField(max_length=255)
     username = models.ForeignKey(User,on_delete=models.CASCADE)
@@ -71,5 +71,5 @@ class Post(models.Model):
     post_date=models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.username
+        return str(self.username)
 
